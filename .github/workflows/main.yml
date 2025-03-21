@@ -1,0 +1,17 @@
+name: Auto Push Code
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Runs every 10 minutes
+jobs:
+  push_code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Commit & Push
+        run: |
+          git config --global user.email "your-email@example.com"
+          git config --global user.name "Your Name"
+          git add .
+          git commit -m "Auto update"
+          git push
